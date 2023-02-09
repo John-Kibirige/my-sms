@@ -8,6 +8,11 @@ const AdminLogin = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // handle the validations and communicate with the backend
+  };
+
   return (
     <div className="admin-login h-[100vh] w-full grid place-items-center">
       <div className="admin-login__container border w-fit p-4">
@@ -15,14 +20,14 @@ const AdminLogin = () => {
           Admin login
         </h1>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <input
               type="text"
               name="username"
               id="username"
               placeholder="username"
-              className=" mb-3"
+              className=" mb-3 rounded-md"
               onChange={handleChange}
               value={formData.username}
             />
@@ -31,6 +36,7 @@ const AdminLogin = () => {
             <input
               type="password"
               name="password"
+              className=" rounded-md"
               id="password"
               placeholder="password"
               onChange={handleChange}
