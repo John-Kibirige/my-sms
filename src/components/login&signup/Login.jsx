@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LoginAs from "./LoginAs";
+import { useSelector } from "react-redux";
 
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -14,13 +15,16 @@ const AdminLogin = () => {
     // handle the validations and communicate with the backend
   };
 
+  // redux related
+  const { signedInAs } = useSelector((state) => state.login);
+
   return (
     <div className="admin-login h-[100vh] w-full grid place-items-center">
       <div className="container flex w-fit justify-between">
         <LoginAs />
         <div className="admin-login__container border w-fit p-4 ml-5">
-          <h1 className=" text-md text-center font-semibold tracking-wide mb-3">
-            Admin login
+          <h1 className=" text-md text-center font-semibold tracking-wide mb-3 capitalize">
+            {`${signedInAs} login`}
           </h1>
 
           <form onSubmit={handleSubmit}>

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { signedAsReducer } from "../../redux/login";
 
 const LoginAs = () => {
   const [option, setOption] = useState("admin");
@@ -6,6 +8,13 @@ const LoginAs = () => {
   const handleOptionChange = (e) => {
     setOption(e.target.value);
   };
+
+  // dispatching the action ot the store
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(signedAsReducer(option));
+  }, [option]);
 
   return (
     <form>
