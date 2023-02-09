@@ -1,6 +1,6 @@
 
 import './App.css'
-import AdminLogin from './components/AdminLogin'
+import AdminLogin from './components/login&signup/Login'
 
 function App() {
   return (
