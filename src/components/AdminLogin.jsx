@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AdminLogin = () => {
+  const [formData, setFormData] = useState({ username: "", password: "" });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <div className="admin-login h-[100vh] w-full grid place-items-center">
       <div className="admin-login__container border w-fit p-4">
@@ -16,6 +23,8 @@ const AdminLogin = () => {
               id="username"
               placeholder="username"
               className=" mb-3"
+              onChange={handleChange}
+              value={formData.username}
             />
           </div>
           <div>
@@ -24,7 +33,15 @@ const AdminLogin = () => {
               name="password"
               id="password"
               placeholder="password"
+              onChange={handleChange}
+              value={formData.password}
             />
+          </div>
+
+          <div className="mt-3 mx-auto w-fit">
+            <button className="bg-blue-600 text-white px-4 py-1 rounded-md uppercase hover:bg-blue-500">
+              Login
+            </button>
           </div>
         </form>
       </div>
