@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import LoginAs from "./LoginAs";
 import { useSelector } from "react-redux";
 
+import { useNavigate } from "react-router-dom";
+
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
+
+  // redux related
+  const { signedInAs } = useSelector((state) => state.login);
+
+  // react-router-dom related
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -13,10 +21,11 @@ const AdminLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // handle the validations and communicate with the backend
-  };
+    // if the user is authenticated then navigate to the dashboard
+    navigate(`/${signedInAs}`);
 
-  // redux related
-  const { signedInAs } = useSelector((state) => state.login);
+    // if the user is not authenticated then show the error message
+  };
 
   return (
     <div className="admin-login h-[100vh] w-full grid place-items-center">
