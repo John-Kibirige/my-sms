@@ -1,13 +1,15 @@
-
-import './App.css'
-import AdminLogin from './components/login&signup/Login'
+import "./App.css";
+import AdminLogin from "./components/login&signup/Login";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <AdminLogin />
+      <Routes>
+        <Route path="/" element={<AdminLogin />} />
+      </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
