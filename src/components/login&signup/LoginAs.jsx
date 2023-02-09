@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 const LoginAs = () => {
+  const [option, setOption] = useState("admin");
+
+  const handleOptionChange = (e) => {
+    setOption(e.target.value);
+  };
+
   return (
     <form>
       <fieldset className="bg-white p-6 rounded-md border w-56">
@@ -11,6 +17,9 @@ const LoginAs = () => {
             className="cursor-pointer"
             name="loginAs"
             id="admin"
+            value="admin"
+            checked={option === "admin"}
+            onChange={handleOptionChange}
           />
           <label className=" ml-2 cursor-pointer" htmlFor="admin">
             Admin
@@ -22,6 +31,9 @@ const LoginAs = () => {
             className="cursor-pointer"
             name="loginAs"
             id="teacher"
+            value={"teacher"}
+            checked={option === "teacher"}
+            onChange={handleOptionChange}
           />
           <label className=" ml-2 cursor-pointer" htmlFor="teacher">
             Teacher
@@ -33,6 +45,9 @@ const LoginAs = () => {
             className="cursor-pointer"
             name="loginAs"
             id="student"
+            value={"student"}
+            checked={option === "student"}
+            onChange={handleOptionChange}
           />
           <label className=" ml-2 cursor-pointer" htmlFor="student">
             Student
@@ -44,6 +59,9 @@ const LoginAs = () => {
             className="cursor-pointer"
             name="loginAs"
             id="parent"
+            value={"parent"}
+            checked={option === "parent"}
+            onChange={handleOptionChange}
           />
           <label className=" ml-2 cursor-pointer" htmlFor="parent">
             Parent
